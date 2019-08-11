@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // we start with state in the component until we move it to redux store. so we use the {useState, useEffect} for now
+import LogItem from './LogItem';
+import PreLoader from '../layout/PreLoader';
 
 const Logs = () => {
 	const [logs, setLogs] = useState([]);
@@ -23,19 +25,19 @@ const Logs = () => {
 	};
 
 	if (loading) {
-		return <h4>Loading...</h4>;
+		return <PreLoader />;
 	}
 
 	// use a collection which is like a list group from bootstrap but is a materialze feature
 	return (
-		<ul className='collection-with-header'>
+		<ul className='collection with-header'>
 			<li className='collection-header'>
 				<h4 className='center'>System Logs</h4>
 			</li>
 			{!loading && logs.length === 0 ? (
 				<p className='center'>No logs to show...</p>
 			) : (
-				logs.map(log => <li>{log.message}</li>)
+				logs.map(log => <LogItem log={log} key={log.id} />)
 			)}
 		</ul>
 	);
