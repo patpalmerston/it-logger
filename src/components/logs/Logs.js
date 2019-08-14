@@ -1,30 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 // we start with state in the component until we move it to redux store. so we use the {useState, useEffect} for now
+import { connect } from 'react-redux'; // must export as HOC ()()
 import LogItem from './LogItem';
 import PreLoader from '../layout/PreLoader';
+import PropTypes from 'prop-types';
+import { getLogs } from '../../actions/logActions';// add to mapStateToProps
 
-const Logs = () => {
-	const [logs, setLogs] = useState([]);
-	const [loading, setLoading] = useState(false);
-
+// this destructed prop pulls from the whole state.
+//logs and loading are props off log and getLogs is props off logActions all need to be destructed for access
+const Logs = ({ log: { logs, loading }, getLogs }) => {
 	useEffect(() => {
 		getLogs();
 		// get rid of the unwanted warnings with the next line
 		// eslint-disable-next-line
 	}, []);
 
-	// creat async function to make request to back end, this time using fetch. fetch returns a promise so use "await". We  use localhost:5000 because we already added a proxy, so we use '/logs'
-	const getLogs = async () => {
-		setLoading(true);
-		const res = await fetch('/logs');
-		// axios has res.data that returns the json, fetch does not so we need to format with .json()
-		const data = await res.json();
-
-		setLogs(data);
-		setLoading(false);
-	};
-
-	if (loading) {
+	if (loading || logs === null) {
 		return <PreLoader />;
 	}
 
@@ -43,4 +34,19 @@ const Logs = () => {
 	);
 };
 
-export default Logs;
+Logs.propTypes = {
+	log: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+	log: state.log // state.log connects to the root reducer that exports all reducers and 'log:' is the prop key that holds that value... then we destructure up top. Or we could just do
+	//logs: state.log.logs,
+	//loading: state.log.loading
+});
+
+export default connect(
+	mapStateToProps,
+	{ getLogs }// must add the action to props after importing
+)(Logs);
+//exporting highlevel method that takes in the component
+// this allows us to use mapStateToProps so we can bring in app level state as props
