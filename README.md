@@ -1,4 +1,6 @@
-npm i reux react-redux redux-thunk redux-devtools-extension
+--npm i reux react-redux redux-thunk redux-devtools-extension
+
+--add action then add reducer then connect it to component
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

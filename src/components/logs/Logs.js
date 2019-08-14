@@ -4,7 +4,7 @@ import { connect } from 'react-redux'; // must export as HOC ()()
 import LogItem from './LogItem';
 import PreLoader from '../layout/PreLoader';
 import PropTypes from 'prop-types';
-import { getLogs } from '../../actions/logActions';// add to mapStateToProps
+import { getLogs } from '../../actions/logActions'; // add to mapStateToProps
 
 // this destructed prop pulls from the whole state.
 //logs and loading are props off log and getLogs is props off logActions all need to be destructed for access
@@ -35,7 +35,8 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
 };
 
 Logs.propTypes = {
-	log: PropTypes.object.isRequired
+	log: PropTypes.object.isRequired,
+	getLogs: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -46,7 +47,7 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ getLogs }// must add the action to props after importing
+	{ getLogs } // must add the action to props after importing
 )(Logs);
 //exporting highlevel method that takes in the component
 // this allows us to use mapStateToProps so we can bring in app level state as props
