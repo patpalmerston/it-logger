@@ -1,7 +1,8 @@
+-- run project with npm run dev
+
 --npm i reux react-redux redux-thunk redux-devtools-extension
 
 --add action then add reducer then connect it to component
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -71,4 +72,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
 # it-logger
