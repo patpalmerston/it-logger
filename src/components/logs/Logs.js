@@ -40,7 +40,7 @@ Logs.propTypes = {
 };
 
 const mapStateToProps = state => ({
-	log: state.log // state.log connects to the root reducer that exports all reducers and 'log:' is the prop key that holds that value... then we destructure up top. Or we could just do
+	log: state.log // state.log connects to the root reducer that exports all reducers and 'log:' is the prop key that holds that state... then we destructure up top. Or we could just do
 	//logs: state.log.logs,
 	//loading: state.log.loading
 });

@@ -1,18 +1,18 @@
 {
   "logs": [
     {
-      "message": "changed network card in 007",
-      "attention": false,
-      "tech": "Sam Smith",
-      "date": "2019-08-14T05:23:30.597Z",
-      "id": 1
-    },
-    {
       "id": 2,
       "message": "fixed hard drive  work station in 002",
       "attention": false,
       "tech": "John Doe",
       "date": "2019-08-14T06:19:14.523Z"
+    },
+    {
+      "message": "sdfgfd",
+      "attention": true,
+      "tech": "sally mera",
+      "date": "2020-05-08T19:58:09.802Z",
+      "id": 3
     }
   ],
   "techs": [
@@ -30,6 +30,11 @@
       "id": 3,
       "firstName": "Sara",
       "lastName": "Wilson"
+    },
+    {
+      "firstName": "afd",
+      "lastName": "sdf",
+      "id": 4
     }
   ]
 }
